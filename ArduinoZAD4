@@ -25,11 +25,4 @@ void loop(){
     analogWrite(led, 0);
     noTone(piezo);
   }
-  Serial.print("A/D vrijednost: ");
-  Serial.print(AD_value);
-  Serial.print("\t nBright: ");
-  Serial.print(nBright);
-  Serial.print("\t Switch: ");
-  Serial.print(button);
-  Serial.println();
 }
