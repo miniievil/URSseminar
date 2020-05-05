@@ -1,0 +1,19 @@
+int pot = A0;
+int AD_value = 0;
+int led = 3;
+int nBright;
+
+void setup(){
+  pinMode(pot, INPUT);
+  pinMode(led, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  AD_value = analogRead(pot);
+  nBright = map(AD_value, 0, 1023, 0, 255);
+  analogWrite(led, nBright);
+  Serial.print("A/D vrijednost: ");
+  Serial.print(AD_value);
+  Serial.println();
+}
