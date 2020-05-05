@@ -1,0 +1,14 @@
+int pot = A0;
+int AD_value = 0;
+
+void setup(){
+  pinMode(pot, INPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  AD_value = analogRead(pot);
+  Serial.print("A/D vrijednost: ");
+  Serial.print(AD_value);
+  Serial.println();
+}
