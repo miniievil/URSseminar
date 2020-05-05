@@ -15,5 +15,7 @@ void loop(){
   analogWrite(led, nBright);
   Serial.print("A/D vrijednost: ");
   Serial.print(AD_value);
+  Serial.print("\t nBright: ");
+  Serial.print(nBright);
   Serial.println();
 }
