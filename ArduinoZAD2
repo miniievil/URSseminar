@@ -1,6 +1,6 @@
 int pot = A0;
 int AD_value = 0;
-int led = 3;
+int led = 4;
 int nBright;
 
 void setup(){
