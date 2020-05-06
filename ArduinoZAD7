@@ -1,0 +1,70 @@
+int pot1 = A0;
+int pot2 = A1;
+int AD_nVolt = 0;
+int AD_nBright = 0;
+int led1 = 5;
+int led2 = 6;
+int led3 = 9;
+int led4 = 10;
+int pin_sw = 2;
+int button = 0;
+int piezo = 7;
+int nVolt;
+int nBright;
+bool state = LOW;
+
+void setup(){
+  pinMode(pot1, INPUT);
+  pinMode(pot2, INPUT);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  pinMode(pin_sw, INPUT_PULLUP);
+  pinMode(piezo, OUTPUT);
+}
+
+void loop(){
+  int led[4] = {5, 6, 9, 10};
+  AD_nVolt = analogRead(pot1);
+  nVolt = map(AD_nVolt, 0, 1023, 0, 5);
+  AD_nBright = analogRead(pot2);
+  nBright = map(AD_nBright, 0, 1023, 0, 255);
+  button = digitalRead(pin_sw);
+  if(button==0){
+    state=!state;
+  }
+  if(state==HIGH){
+    analogWrite(led1, nBright);
+    analogWrite(led2, nBright);
+    analogWrite(led3, nBright);
+    analogWrite(led4, nBright);
+  }else{    
+    if(nVolt>=0 && nVolt<1){
+      analogWrite(led1, 0);
+      analogWrite(led2, 0);
+      analogWrite(led3, 0);
+      analogWrite(led4, 0);
+    }else if(nVolt>=1 && nVolt<2){
+      analogWrite(led1, nBright);
+      analogWrite(led2, 0);
+      analogWrite(led3, 0);
+      analogWrite(led4, 0);
+    }else if(nVolt>=2 && nVolt<3){
+      analogWrite(led1, nBright);
+      analogWrite(led2, nBright);
+      analogWrite(led3, 0);
+      analogWrite(led4, 0);
+    }else if(nVolt>=3 && nVolt<4){
+      analogWrite(led1, nBright);
+      analogWrite(led2, nBright);
+      analogWrite(led3, nBright);
+      analogWrite(led4, 0);
+    }else if(nVolt>=4 && nVolt<=5){
+      analogWrite(led1, nBright);
+      analogWrite(led2, nBright);
+      analogWrite(led3, nBright);
+      analogWrite(led4, nBright);
+    }
+  }
+}
