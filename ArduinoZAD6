@@ -1,4 +1,3 @@
-//NOTE: Nije najbolje rješenje, al neda mi se zajebavat s interruptima
 int pot1 = A0;
 int pot2 = A1;
 int AD_nBright = 0;
